@@ -1,0 +1,229 @@
+
+<html>
+<body>
+
+
+
+
+   
+   <style type="text/css">
+   #idbuttons{
+          height:130px;
+          background-color:#0ABD;
+   }
+   #fid{
+       height:40px;
+       width:100px;
+       border-radius:50px;
+   }
+   #file-id{
+   width:370px;
+   border-radius:50px;
+   }
+   #Start{
+       margin-left:80px;
+       margin-top:8px;
+       height:40px;
+   }
+   #Stop{
+   margin-left:90px;
+   margin-top:8px;
+   height:40px
+   }
+   #content{zoom:2;
+       background-color:#E5E4E2;
+       height:2000px; 
+font-weight: bold;
+   }
+   #control{
+         background-color:#E5E2;
+         height:60px;
+   }
+   </style>
+
+  
+   <div id="idbuttons">
+
+  <input type="file" id="file-id" name="file_name" onchange="ExtractText();">
+
+
+   <button id="fileBtn">
+   </div>
+   
+   <div id="control">
+   Splannes
+   </div>
+  <div id="content">
+
+
+
+    <div id="output"></div> <div id="silivestir"></div>
+        
+   </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.entry.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.worker.min.js"></script>
+    
+
+<input type="submit" onclick="ADM()">
+    <!-- a container for the output -->
+<audio controls id="aa">
+<script>
+currentTime=1;
+function AaDM(){
+
+
+var as=document.getElementById("as");
+as.current time+=20;
+}
+</script>
+
+
+</audio>
+        
+
+
+
+    <script>
+function ADM(){
+var ax=window.speechSynthesis;
+ax.pause(speech);}
+        var datass = '';
+        var DataArr = [];
+        PDFJS.workerSrc = '';
+
+        function ExtractText() {
+            var input = document.getElementById("file-id");
+            var fReader = new FileReader();
+            fReader.readAsDataURL(input.files[0]);
+            // console.log(input.files[0]);
+            fReader.onloadend = function (event) {
+                convertDataURIToBinary(event.target.result);
+            }
+        }
+
+        var BASE64_MARKER = ';base64,';
+
+        function convertDataURIToBinary(dataURI) {
+
+            var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+            var base64 = dataURI.substring(base64Index);
+            var raw = window.atob(base64);
+            var rawLength = raw.length;
+            var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+            for (var i = 0; i < rawLength; i++) {
+                array[i] = raw.charCodeAt(i);
+            }
+            pdfAsArray(array)
+
+        }
+
+        function getPageText(pageNum, PDFDocumentInstance) {
+            
+            return new Promise(function (resolve, reject) {
+                PDFDocumentInstance.getPage(pageNum).then(function (pdfPage) {
+                    
+                    pdfPage.getTextContent().then(function (textContent) {
+                        var textItems = textContent.items;
+                        var finalString = "";
+
+                        
+                        for (var i = 0; i < textItems.length; i++) {
+                            var item = textItems[i];
+
+                            finalString += item.str + " ";
+
+
+
+
+
+                        }
+
+                        
+                        resolve(finalString);
+                    });
+                });
+            });
+        }
+
+        function pdfAsArray(pdfAsArray) {
+
+            PDFJS.getDocument(pdfAsArray).then(function (pdf) {
+
+                var pdfDocument = pdf;
+                
+                var pagesPromises = [];
+
+                for (var i = 0; i < pdf.pdfInfo.numPages; i++) {
+                    
+                    (function (pageNumber) {
+                        
+                        pagesPromises.push(getPageText(pageNumber, pdfDocument));
+                    })(i + 1);
+                }
+
+             
+                Promise.all(pagesPromises).then(function (pagesText) {
+
+                    
+                    
+                    console.log(pagesText); 
+                    console.log(pagesText.length);
+                    var outputStr = "";
+                    for (var pageNum = 0; pageNum < pagesText.length; pageNum++) {
+                        console.log(pagesText[pageNum]);
+                        
+
+                        var div = document.getElementById('output');
+                         var silivestir = document.getElementById('silivestir');
+ //nimetoa nimetoa page namba +div.innerHTML;
+                     outputStr=(pagesText[pageNum]);
+                        div.innerHTML = (outputStr);
+
+outputStr = "<br/><br/>Page " + (pageNum + 1) + " contents <br/> <br/>";
+                     silivestir.innerHTML=silivestir.innerHTML+(outputStr +pagesText[pageNum]);
+
+
+                   var Assey=div.innerHTML;
+
+
+
+let newstr = Assey.replace(/<br>/i, '');
+
+
+
+       var assey=newstr;
+        
+
+                
+                let speech = new SpeechSynthesisUtterance();
+                speech.lang = "en";
+                
+                speech.text =assey;
+                speech.volume = 1;
+                speech.rate = 0.43;
+                speech.pitch = 1;
+                
+               var as= window.speechSynthesis.speak(speech);
+
+
+ div.innerHTML =  div.innerHTML+(outputStr + pagesText[pageNum]);
+
+            
+}
+  });
+
+            }, function (reason) {
+                // PDF loading error
+                console.error(reason);
+            });
+        }
+
+    </script>
+
+<div style="text-align:right;position:fixed;bottom:3px;right:3px;width:100%;z-index:999999;cursor:pointer;line-height:0;display:block;"><a target="_blank" href="https://www.freewebhostingarea.com" title="Free Web Hosting with PHP5 or PHP7"><img alt="Free Web Hosting" src="https://www.freewebhostingarea.com/images/poweredby.png" style="border-width: 0px;width: 180px; height: 45px; float: right;"></a></div>
+</body>
+
+</html>
