@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="/storage/emulated/0/kiswahiliscript.js"></script>
+
+  <title>kiswahiliScript programming </title>
+  <style>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .a{
+  font-wight:bold;
+  background-color:red;
+  
+  zoom:4px;
+  
+  color:white;
+  
+  }
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  }
+  
+  .compiler-container {
+  overflow-y:scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 20px;
+  }
+  
+  .editor {
+  overflow-y:scroll;
+  position: relative;
+  width: 100%;
+  height: 300px ;
+  margin-bottom: 20px;
+  display: block;
+  }
+  
+  .line-numbers {
+  overflow-y:scroll;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  padding: 10px;
+  background-color: #222;
+  color: #ccc;
+  text-align: right;
+  font-size: 12px;
+  }
+  
+  .code-input,#documentation {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  background-color: #111;
+  color: #15ae04;
+  border: none;
+  padding-left: 50px;
+  resize: none;
+  outline: none;
+  }
+  
+  #output{
+  content-align:right;
+  position:relative;
+  white-space:normal;
+  word-wrap:break-word;
+  margin-left:10px;
+  width: 100%;
+  padding: 10px;
+  background-color: #222;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #ccc;
+  }
+  
+  .buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 20px;
+  }
+  
+  .run-button,
+  .edit-button {
+  background-color: #15ae04;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /***  hay assey right here***/
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    input[type="checkbox"] {
+      margin-bottom: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+    
+    #another,#print{
+    margin-left:30%;
+      display:none;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    h3,h1,.construct{color:navy}
+    legend{font-weight:bold;
+    zoom:1
+    
+    }
+    legend{color:white;}
+   
+   #kiswahiliscript{opacity:.7;
+   background-color: darkblue;}
+   
+   
+  </style>
+</head>
+<body>
+
+<div id="h">
+  <center><h1>Splannes</h1></center>
+  <h3>kiswahiliScript with a  <span class=" head">'<b><i>.kiss</i></b>'</span> extension  2023</h3>
+
+ </div>
+ <form id="kiswahiliscript">
+    <fieldset>
+    <legend >Here are some language constructs 🤗🤗 </legend>
+      
+<label for="construct " class="construct">for demo with declarations select here</label>
+      <select id="declarations" name="construct" onchange="a()" >
+      <option value="" style="color:navy">Select here for declarations!</option>
+      <option value="function">function declaration</option>
+      <option value="objects" disabled>object declaration</option>
+    <option value="variable">variable declaration sring</option>
+       <option value="variable declaration number">varable declaration number</option>
+      
+       </select>
+      <br>
+      
+      
+      <label for="street" class="construct">select here for call,and referencing</label>
+      <select id="calling" name="street" onchange="b()">
+      <option value="">for call and referencing</option>
+      <option value="functionCall">function call</option>
+      <option value="objet and variable" disabled>object and variable referncing</option>
+      
+      </select>
+      <br>
+      
+      
+      <label for="relation" class="construct"> demo with iterations </label>
+      <select id="iterations" name="Social relation" onchange="c()">
+      <option value="">demo with iterations</option>
+      <option value="ikiwa">ikiwa loop</option>
+      <option value="wakati">wakati loop</option>
+      
+      </select>
+      <br>
+      
+      
+      <label for="books" class="construct">API's and built in methods</label>
+      <select id="api" name="api" onchange="d()">
+      <option value="">demo with api and methods here</option>
+      <option value="chukua api">chukua api</option>
+     
+      </select>
+      <br>
+      
+
+<label for="status" class="construct">conditional loops</label>
+ <select id="conditions" name="conditionals" onchange="e()">
+   <option value="">demo with conditional and case</option>
+   <option value="if">if</option>
+   <option value="if else">if else</option>
+   <option value="if else if else">if else if else</option>
+    <option value="switch" disabled>switch</option>
+       
+ </select>
+ <br>
+
+
+      <label for="" class ="construct">DOM methods</label>
+      <select id="dom" name="dom" onchange="f()">
+        <option value="">demo with DOM methods here</option>
+        <option value="select element"disabled>select element</option>
+        <option value="color">color</option>
+        <option value="other"disabled>Other</option>
+      </select>
+      <br>
+
+      
+      <label for="functionalrelstion" class="construct">see our example of chatbot HTML,kiswahiliscript and CSS</label>
+      <select id="example" name="chat bot" onchange="g()">
+      <option value="">select here</option>
+      <option value="chat bot">chatbot</option>
+     
+      </select>
+      <br>
+      
+     
+     
+  <center>  <strong>  <input type="submit" value="reset" style="background-color:blue;opacity:9"></strong></center>
+    </fieldset>
+  </form>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <button id="print" onclick="saveTableAsText()">Save as Text</button>
+  
+
+<input type="button"  id="another" value="Another participant">
+
+
+  <center><h3>  here is live expermentation   </h3></center>
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="compiler-container">
+  
+  
+  <div class="editor">
+  <div class="line-numbers"></div>
+  <textarea class="code-input" rows="10" onchange="xxxx()"></textarea>
+  </div>
+  <div class="buttons-container">
+  <button class="run-button"style="background-color:navy">Run</button>
+  
+  <button class="edit-button" style="background-color:navy">Edit</button>
+  
+  
+  </div>
+  <div id="output"></div>
+  </div>
+  
+  <div id="documentation">
+  
+  
+  here is our kiswahiliscript documentation
+  
+  </div>
+  
+  
+  
+  
+ <script>
+  
+  
+  var lineNumbers,lineNumbersHTML,i
+  
+  
+  
+  
+  
+  var outputArea = document.querySelector('#output');
+  var codeInput = document.querySelector('.code-input');
+  lineNumbers = document.querySelector('.line-numbers');
+  var runButton = document.querySelector('.run-button');
+  var editButton = document.querySelector('.edit-button');
+  
+  
+  
+
+  function xxxx() {
+  
+  // document.querySelector('#output').style.display="none";
+  var lines = codeInput.value.split('\n');
+  lineNumbersHTML = '';
+  for ( i = 0; i < lines.length; i++) {
+  lineNumbersHTML += (i + 1) + '<br>';
+  }
+  lineNumbers.innerHTML = lineNumbersHTML;
+  
+  
+  
+  }
+  
+ 
+  
+  
+  
+  
+  /*
+  
+  var runButton = document.querySelector('.run-button')
+  
+  
+  runButton.addEventListener("click",function(){
+  
+  let input=document.querySelector('.code-input').value;
+  
+  
+  try{
+  
+  const tokens = tokenizer(input);
+  const ast = parser(tokens);
+  let codex=generateCode(ast)
+  var xxx=  document.querySelector("#output")
+eval(codex)
+ }
+  catch (error) {
+  document.getElementById('output').innerHTML = `<p style="color:red ;position:relative;margin-left:30px;">Error  at position arround line number <span class='a'>${i} </span>  : ${error.message} </p>`;
+  }
+  
+  
+  
+  })
+  
+  
+  
+  document.querySelector('.edit-button').addEventListener("click",function(){
+  
+  document.querySelector('.code-input').focus();
+  
+  
+  
+  })
+  
+  
+  */
+  
+     
+     
+   function a(){
+   
+   
+   const declarations = document.getElementById('declarations').value
+   
+   
+   
+   if(declarations==="function"){
+
+   
+   document.querySelector('.code-input').value=`kazi assey(){
+    onesha("bob")
+    }`
+   
+   }
+   
+   
+   
+   
+   if(declarations==="variable"){
+   
+   
+   document.querySelector('.code-input').value=`namba a=278
+   onesha(a)
+   
+   sentensi name="Alice"
+   
+   onesha(name)
+   
+   `
+   
+   }
+   
+   
+   xxxx()
+   
+   
+   }
+     
+     
+     
+     
+     function b(){
+     
+     const calling = document.getElementById('calling').value
+     
+     
+     
+     if(calling==="functionCall"){
+     
+     
+     document.querySelector('.code-input').value+=` \n assey()`
+     
+     }
+     
+ xxxx()
+  }
+ function c(){
+     
+     const ikiwa= document.getElementById('iterations').value
+     
+  if(ikiwa==="ikiwa"){
+     
+     
+     document.querySelector('.code-input').value=`ikiwa(namba a=0;a<10;a++){
+     onesha(a)
+     }`
+     
+     }
+     
+    if(ikiwa==="wakati"){
+     
+     
+     document.querySelector('.code-input').value=`namba x=278
+    wakati(x<1000){
+    x++}
+    onesha(x)
+     `
+     
+     }
+     
+     
+     xxxx()
+     }
+    function d(){
+          
+          const api = document.getElementById('api').value
+          if(api==="chukua api"){
+          
+    document.querySelector('.code-input').value=`chukua("https://www.openai.com/chatgpt",POST,{vontent-Type:json},body).halafu(kazi(res){
+          
+         res.json() }).halafu(kazi(data){
+         Data text=data.choices[0].message
+         })
+          onesha(text)
+          `
+          
+          }
+          
+      xxxx()
+     }
+         function e(){
+          
+          const conditions = document.getElementById('conditions').value
+    if(conditions==="if"){
+          
+          
+          document.querySelector('.code-input').value=`
+          namba mwaka=2023
+          kama(mwaka===2023){
+          onesha("hello Tanzania")
+          }`
+          
+          }
+         if(conditions==="if else"){
+          
+          
+          document.querySelector('.code-input').value=`namba y=278
+          kama(y===278){
+          onesha("alice")
+          }
+          (){
+          onesha("bob")
+          }
+          
+          `
+          
+          }
+          
+     if(conditions==="if else if else"){
+          
+          
+          document.querySelector('.code-input').value=`namba y=278
+          kama(y===278){
+          onesha("alice")
+          }
+          (y>1000){
+          onesha("bob na alice! hellooo")
+          }
+          (){
+          onesha("karibu bongo")
+          
+          }
+          
+          
+          `
+          
+          }
+          
+          
+          xxxx()
+          
+          
+          }
+         function f(){
+          
+          const dom = document.getElementById('dom').value
+   if(dom==="color"){
+      document.querySelector('.code-input').value=`elementi("id,output").stailiRangiElementi(navy)`
+       }
+          
+          xxxx()}
+          
+          
+          
+          
+          
+          
+          var runButton = document.querySelector('.run-button')
+          
+          
+          runButton.addEventListener("click",function(){
+          //  var outputArea = document.querySelector('.output-area');
+          
+          
+          
+          
+          
+          
+          let input=document.querySelector('.code-input').value;
+          
+          
+          try{
+  
+  
+  // Function to compile Kiswahili Script code
+   
+   
+     const tokens = tokenizer(input);
+     const ast = parser(tokens);
+     let codex=generateCode(ast)
+     eval(codex)
+    
+         }
+          catch (error) {
+          document.getElementById('output').innerHTML = `<p style="color:red ;position:relative;margin-left:30px;">Error  at position arround line number <span class='a'>${i} </span>  : ${error.message} </p>`;
+          }
+          
+          
+          
+          })
+          
+          
+          
+          document.querySelector('.edit-button').addEventListener("click",function(){
+          
+          document.querySelector('.code-input').focus();
+          
+          
+          
+          })
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+   
+          
+        
+  </script>
+  
+  
+  
+
+    <script src="/k1iswahiliscript.js"></script>
+     
+
+</body>
+</html>
