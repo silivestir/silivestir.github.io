@@ -1,47 +1,47 @@
 
-  (()=>{
 
-/*
-
-License
-
-Copyright (c) 2023 Tanzania silivestir assey,wagunda isaac,Minja Ezekiel(Splannes).
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the right
-to use but not copy, modify, merge, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-** IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-** FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-** AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-** LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-** OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-** SOFTWARE.
-
-
-
-
-
-*
-
-
-**/
-
-
-
-
-let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
-
-  
-
-
+    
+    /*
+    
+    License
+    
+    Copyright (c) 2023 Tanzania silivestir assey,wagunda isaac,Minja Ezekiel(Splannes).
+    
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the right
+    to use but not copy, modify, merge, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+    
+    ** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ** IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ** FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ** AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ** LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ** OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ** SOFTWARE.
+    
+    
+    
+    
+    
+    *
+    
+    
+    **/
+    
+    
+    
+    
+    let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
+    
+    
+    
+    
     
     
     
@@ -84,7 +84,7 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     tokens.push({ type: 'keyword', value });
     }
     else if (value==='++'||value==='--'||value==='*='||value==='-='||value==='/='){
-    alert("in")
+    
     
     tokens.push({ type: 'DO', value });
     
@@ -148,7 +148,32 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     function parseExpression() {
     let token = tokens[current];
     
-    if (token.type === 'number' || token.type === 'variable'|| token.type==='identifier'||token.type==='"') {
+    
+    
+    
+    
+    
+      if(tokens[current].type==='identifier' && tokens[current+1].value==='('){
+    
+    let args=''
+    let name=tokens[current].value;
+    
+    current+=1;
+    if(tokens[current].value=='('){
+    current+=1;
+    
+    
+     args=parseArgumentList()
+    current++
+    }
+    current+=2;
+    
+    return{type:'funcCall',name,args}
+    }
+    
+    
+    
+   else if (token.type === 'number' || token.type === 'variable'|| token.type==='identifier'||token.type==='"') {
     
     
     let value=''
@@ -204,7 +229,7 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     if (tokens[current].type === 'operator' && tokens[current].value === ')') {
     current+=1;
     
-    return { type: 'PrintStatement', value:expression,isString};
+  return { type: 'PrintStatement', value:expression,isString};
     } else {
     throw new SyntaxError('Missing closing parenthesis  ');
     }
@@ -263,7 +288,7 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     
     
     while (tokens[current].value !== '"') {
-    string += tokens[current].value;
+    string += tokens[current].value
     
     
     current++
@@ -271,13 +296,14 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     }
     
     
-    current+=2
+    current+=1
     
     
     
     }
     
-    return {type:'v',name:name,value:string}
+    
+    return {type:'v',name:name,string}
     }
     
     
@@ -460,6 +486,8 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     
     
     else if (token.type === 'keyword' && token.value === 'kazi') {
+    
+  
     current++;
     if (tokens[current].type === 'identifier') {
     let functionName = tokens[current].value;
@@ -474,12 +502,9 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     
     
     let body=parseExpression();
-    
-    
-    
-    
+   
     if(tokens[current].value=="}"){
-    
+   
     current+=2}
     return { type: 'FunctionDeclaration', name: functionName, arguments,body };
     } else {
@@ -654,12 +679,12 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     if (tokens[current].type === 'operator' && tokens[current].value === ')') {
     current+=2;
     
-    
+   
     let body = parseExpression();
     
     current++
     
-    
+
     return { type: 'for',initialization,condition,update,body };
     } 
     
@@ -677,32 +702,12 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     
     
     
-    else if (token.type === 'identifier'&&tokens[current+1].value=='(') {
-    
-    let name=tokens[current].value;
-    
-    current+=1;
-    if(tokens[current].value=='('){
-    current+=1;
-    
-    
-    let args=parseArgumentList()
-    current++
-    }
-    current+=2;
-    
-    return{type:'funcCall',name,args}
-    }
-    
-    
-    
-    
     
     
     
     
     else if (token.type === 'keyword' && token.value === 'wakati') {
-    
+    let body=""
     current++;
     
     
@@ -726,8 +731,11 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     current+=2;
     
     
-    let body = parseExpression();
-    current++
+    body  = parseExpression();
+   
+    current+=3
+    
+    
     return { type: 'while', condition, body };
     } else {
     throw new SyntaxError('Missing closing parenthesis');
@@ -932,6 +940,7 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     break;
     }
     }
+   // current++
     
     return arguments;
     }
@@ -965,6 +974,11 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     }
     
     
+    
+    
+    
+    
+    
     else if (tokens[current].type === 'variable') {
     
     statements.push(parseExpression());
@@ -988,7 +1002,11 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     statements.push(parseExpression());
     }
     
+    else if (tokens[current].type === 'identifier' && tokens[current+1].value=='(') {
+   
+    statements.push(parseExpression());
     
+    }
     
     else if (tokens[current].type === 'keyword' && tokens[current].value === 'kazi') {
     statements.push(parseExpression());
@@ -1081,12 +1099,12 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     
     function traverse(node) {
     
-    
+   
     
     
     if(node.type=="Literal"){
     
-    
+   
     
     
     return code+=node.value;
@@ -1098,9 +1116,11 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     if(node.isString){
     
     
-    return code+=`alert("${node.value}");`
+   return code+=`  alert("${node.value}");`
     }else{
-    return  code+=`alert(${node.value.value});`;
+    
+return code+=` alert(${node.value.value});`;
+    
     }
     
     }
@@ -1108,28 +1128,34 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     
     else if(node.type=="_D"){
     
-    
+  
     
     return code+=`var ${node.name} =${node.value};`;
     }
     else if(node.type=="v"){
     
+   
     
+    return code+=`var ${node.name} ="${node.string}";`;
     
-    return code+=`var ${node.name} ="${node.value}";`;
+
     }
     
     
     
     else if(node.type=="FunctionDeclaration"){
     
-    return code += `function ${node.name}(${node.arguments.join(', ')}) {${traverse(node.body)}}`;
+     
+    return code += `function ${node.name}(${node.arguments.join(', ')}) {${traverse(node.body)}} ;`;
+    
     }
     
     
     else if(node.type=="funcCall"){
     
-    return code += ` ${node.name}(${node.arguments.join(', ')})`;
+   return code += ` ${node.name}(${node.args})`;
+   
+    
     }
     
     
@@ -1150,7 +1176,10 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     else if(node.type=="while"){
     
     
-    return   code += `while (${node.condition}) {${traverse(node.body)}}`;
+      return code += `while (${node.condition}) {${traverse(node.body)}
+      x++}`;
+    
+   
     }
     
     
@@ -1365,9 +1394,10 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     
     
     else if(node.type=="for"){
+   
     
+     return code += `for( var ${node.initialization} ; ${node.condition} ; ${node.update}) {${traverse(node.body)}}`;
     
-    return  code += `for( let ${node.initialization} ; ${node.condition} ; ${node.update}) {${traverse(node.body)}}`;
     }
     
     
@@ -1399,43 +1429,417 @@ let [ezekiel,wagunda,assey]=["minja","isack","silivestir"]
     
     
     
-   /*
+    /*
     
-        // Function to compile Kiswahili Script code
-        function compileKiswahiliScript(input) {
-            
-            const tokens = tokenizer(input);
-            const ast = parser(tokens);
-            let codex=generateCode(ast)
-            eval(codex)
-        }
-
-        // Function to handle Kiswahili Script tags
-        function handleKiswahiliScriptTags() {
-            const kiswahiliScriptTags = document.querySelectorAll('kiswahiliscript');
-
-            kiswahiliScriptTags.forEach(tag => {
-                const src = tag.getAttribute('src');
-                
-                if (src) {
-                
-                
-                    fetch(src)
-                        .then(response => response.text())
-                        .then(input => compileKiswahiliScript(input))
-                        .catch(error => console.error("Error loading .kiss file:", error));
-                } else {
-                    // Compile code from the tag's content
-                    const input = tag.textContent;
-                    compileKiswahiliScript(input);
-                }
-            });
-        }
-
-        
-       handleKiswahiliScriptTags();
-        
-        //for now
-        */
+    // Function to compile Kiswahili Script code
+    function compileKiswahiliScript(input) {
     
-        })()
+    const tokens = tokenizer(input);
+    const ast = parser(tokens);
+    let codex=generateCode(ast)
+    eval(codex)
+    }
+    
+    // Function to handle Kiswahili Script tags
+    function handleKiswahiliScriptTags() {
+    const kiswahiliScriptTags = document.querySelectorAll('kiswahiliscript');
+    
+    kiswahiliScriptTags.forEach(tag => {
+    const src = tag.getAttribute('src');
+    
+    if (src) {
+    
+    
+    fetch(src)
+    .then(response => response.text())
+    .then(input => compileKiswahiliScript(input))
+    .catch(error => console.error("Error loading .kiss file:", error));
+    } else {
+    // Compile code from the tag's content
+    const input = tag.textContent;
+    compileKiswahiliScript(input);
+    }
+    });
+    }
+    
+    
+    handleKiswahiliScriptTags();
+    
+    //for now
+    */
+    
+    
+    
+    var lineNumbers,lineNumbersHTML,i
+    
+    
+    
+    
+    
+    var outputArea = document.querySelector('#output');
+    var codeInput = document.querySelector('.code-input');
+    lineNumbers = document.querySelector('.line-numbers');
+    var runButton = document.querySelector('.run-button');
+    var editButton = document.querySelector('.edit-button');
+    
+    
+    
+    
+    function xxxx() {
+    
+    // document.querySelector('#output').style.display="none";
+    var lines = codeInput.value.split('\n');
+    lineNumbersHTML = '';
+    for ( i = 0; i < lines.length; i++) {
+    lineNumbersHTML += (i + 1) + '<br>';
+    }
+    lineNumbers.innerHTML = lineNumbersHTML;
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    /*
+    
+    var runButton = document.querySelector('.run-button')
+    
+    
+    runButton.addEventListener("click",function(){
+    
+    let input=document.querySelector('.code-input').value;
+    
+    
+    try{
+    
+    const tokens = tokenizer(input);
+    const ast = parser(tokens);
+    let codex=generateCode(ast)
+    var xxx=  document.querySelector("#output")
+    eval(codex)
+    }
+    catch (error) {
+    document.getElementById('output').innerHTML = `<p style="color:red ;position:relative;margin-left:30px;">Error  at position arround line number <span class='a'>${i} </span>  : ${error.message} </p>`;
+    }
+    
+    
+    
+    })
+    
+    
+    
+    document.querySelector('.edit-button').addEventListener("click",function(){
+    
+    document.querySelector('.code-input').focus();
+    
+    
+    
+    })
+    
+    
+    */
+    
+    
+    
+    function a(){
+    
+    
+    const declarations = document.getElementById('declarations').value
+   
+    
+    
+    if(declarations==="function"){
+    
+    
+    document.querySelector('.code-input').value=`kazi assey(){
+    onesha("hello Tanzania naandika kiswahiliscript programm na")
+    };
+    
+    `
+    
+    }
+    
+    
+    if(declarations==="number"){
+    
+    
+    document.querySelector('.code-input').value=`
+    
+    
+    namba mwaka=2023
+    
+    onesha(mwaka)
+    
+    `
+    
+    }
+    
+    
+    if(declarations==="variable"){
+    
+    
+    document.querySelector('.code-input').value=`
+    
+    
+    sentensi name="Alice"
+    
+    onesha(name)
+    
+    `
+    
+    }
+    
+    
+    xxxx()
+    
+    
+    }
+    
+    
+    
+    
+    function b(){
+    
+    const calling = document.getElementById('calling').value
+    
+    
+    
+    if(calling==="functionCall"){
+    
+    
+    document.querySelector('.code-input').value+=` \n assey()`
+    
+    }
+    
+    if(calling==="onesha"){
+    document.querySelector('.code-input').value+=` \n onesha("hay sisi ni Splannes Team tunafanya kiswahiliscript na isaac,Ezekiel,Rama")`
+    }
+    
+    xxxx()
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    function c(){
+    
+    const ikiwa= document.getElementById('iterations').value
+    
+    
+    
+    
+    
+    
+    
+    
+    if(ikiwa==="ikiwa"){
+    
+    
+    document.querySelector('.code-input').value=`ikiwa(namba a=0;a<10;a++){
+    onesha(a)
+    }`
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    if(ikiwa==="wakati"){
+    
+    
+    document.querySelector('.code-input').value=`namba x=278
+    wakati(x<1000){
+    
+    
+    onesha(x)}
+    
+    `
+    
+    }
+    
+    
+    xxxx()
+    }
+    function d(){
+    
+    const api = document.getElementById('api').value
+    if(api==="chukua api"){
+    
+    document.querySelector('.code-input').value=`chukua("https://www.openai.com/chatgpt",POST,{vontent-Type:json},body).halafu(kazi(res){
+    
+    res.json() }).halafu(kazi(data){
+    Data text=data.choices[0].message
+    })
+    onesha(text)
+    `
+    
+    }
+    
+    xxxx()
+    }
+    function e(){
+    
+    const conditions = document.getElementById('conditions').value
+    if(conditions==="if"){
+    
+    
+    document.querySelector('.code-input').value=`
+    namba mwaka=2023
+    kama(mwaka===2023){
+    onesha("hello Tanzania")
+    }`
+    
+    }
+    if(conditions==="if else"){
+    
+    
+    document.querySelector('.code-input').value=`namba y=278
+    kama(y===278){
+    onesha("alice")
+    }
+    (){
+    onesha("bob")
+    }
+    
+    `
+    
+    }
+    
+    if(conditions==="if else if else"){
+    
+    
+    document.querySelector('.code-input').value=`namba y=278
+    kama(y===278){
+    onesha("alice")
+    }
+    (y>1000){
+    onesha("bob na alice! hellooo")
+    }
+    (){
+    onesha("karibu bongo")
+    
+    }
+    
+    
+    `
+    
+    }
+    
+    
+    xxxx()
+    
+    
+    }
+    function f(){
+    
+    const dom = document.getElementById('dom').value
+    if(dom==="color"){
+    document.querySelector('.code-input').value=`elementi("id,output").stailiRangiElementi(navy)`
+    }
+    
+    xxxx()}
+    
+    
+    
+    
+    
+    
+    var runButton = document.querySelector('.run-button')
+    
+    
+    runButton.addEventListener("click",function(){
+    //  var outputArea = document.querySelector('.output-area');
+    
+    
+    
+    
+    
+    
+    let input=document.querySelector('.code-input').value;
+    
+    
+    try{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // Function to compile Kiswahili Script code
+    
+    
+    const tokens = tokenizer(input);
+    const ast = parser(tokens);
+    let codex=generateCode(ast)
+    eval(codex)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+    catch (error) {
+    document.getElementById('output').innerHTML = `<p style="color:red ;position:relative;margin-left:30px;">Error  at position arround line number <span class='a'>${i} </span>  : ${error.message} </p>`;
+    }
+    
+    
+    
+    })
+    
+    
+    
+    document.querySelector('.edit-button').addEventListener("click",function(){
+    
+    document.querySelector('.code-input').focus();
+    
+    
+    
+    })
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
