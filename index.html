@@ -1,3 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KiswahiliScript Documentation: A programming language for Swahili speakers with comprehensive guides in both Swahili and English. Learn programming concepts using KiswahiliScript.">
+    <meta name="keywords" content="KiswahiliScript, Swahili programming language, programming documentation, Swahili coding, Silivestir Assey, Isack Wagunda">
+    <meta name="author" content="Silivestir Assey, Isack Wagunda">
+    <title>KiswahiliScript Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007BFF;
+        }
+        .toggle-button {
+            margin-bottom: 20px;
+        }
+        .toggle-button button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        .toggle-button button:hover {
+            background-color: #0056b3;
+        }
+        .content {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KiswahiliScript Documentation</h1>
+        <div class="toggle-button">
+            <button onclick="toggleLanguage('sw')">Kiswahili</button>
+            <button onclick="toggleLanguage('en')">English</button>
+        </div>
+        <div id="sw" class="content">
+            <h2>Muhtasari wa KiswahiliScript</h2>
+            <p>KiswahiliScript ni lugha ya programu iliyoandaliwa kwa ajili ya watu wanaozungumza Kiswahili. Hapa chini utaona maelezo ya kila kipande cha lugha:</p>
+            <h3>Vikumbusho vya Lugha</h3>
+            <pre>$a = 2;</pre>
+            <p><strong>Maelezo:</strong> Hii inatangaza kipande cha data (variable) kinachoitwa <code>$a</code> na kumwambia kwamba thamani yake ni 2.</p>
+            <pre>wakati [ a < 100 ] {
+  $b = 2;
+  $niNambaTasa = 0;
+  wakati [ b <= a / 2 ] {
+    kama [ !a % b == 0 ] {
+      b = b + 1;
+    } au {
+      b = a;
+      niNambaTasa = 1;
+    };
+  };
+  kama [ !niNambaTasa ] {
+    andika a + ' ni namba tasa';
+    andika;
+  };
+  a = a + 1;
+};</pre>
+            <p><strong>Maelezo:</strong> Huu ni mfano wa kutumia <code>wakati</code> (while) kwa ajili ya kuandika mpangilio wa taratibu. Hapa tunachunguza namba na kuchapisha kama namba ni tasa.</p>
+            <pre>kazi semaHabari:jina: => {
+  andika 'habari ' + jina;
+};</pre>
+            <p><strong>Maelezo:</strong> Hii inatambulisha kazi inayoitwa <code>semaHabari</code> ambayo inachapisha salamu kwa jina lililotolewa.</p>
+            <pre>$counter = 0;
+
+wakati [ counter < 10 ] {
+  andika counter;
+  counter = counter + 1;
+};</pre>
+            <p><strong>Maelezo:</strong> Hii ni mfano wa kutumia <code>wakati</code> (while) na kuhesabu kutoka 0 hadi 9.</p>
+            <pre>$jina = 'Patricia';
+
+andika jina;</pre>
+            <p><strong>Maelezo:</strong> Hii inatangaza kipande cha data kinachoitwa <code>$jina</code> na kisha kuchapisha jina hilo.</p>
+            <pre>kazi kulaTikiti:: => {
+  andika 'ninakula tikiti';
+  idadiYaTikiti = idadiYaTikiti - 1;
+  andika 'zina ' + idadiYaTikiti + ' zilizobaki';
+  andika;
+};</pre>
+            <p><strong>Maelezo:</strong> Hii ni kazi inayoeleza matendo ya kula tikiti na kupunguza idadi ya tikiti zilizobaki.</p>
+            <pre>$idadiYaTikiti = 20;
+
+wakati [ idadiYaTikiti > 5 ] {
+  kulaTikiti::;
+};</pre>
+            <p><strong>Maelezo:</strong> Hii ni mfano wa kutumia <code>wakati</code> (while) kuendelea kula tikiti hadi idadi ya tikiti iwe ndogo au sawa na 5.</p>
+            <h3>Wasiliana na Waandishi</h3>
+            <p><strong>Silivestir Assey:</strong> <a href="mailto:silivestirassey@gmx.com">silivestirassey@gmx.com</a></p>
+            <p><strong>Isack Wagunda:</strong> <a href="mailto:mwlwaphysicsict@gmail.com">mwlwaphysicsict@gmail.com</a></p>
+        </div>
+        <div id="en" class="content">
+            <h2>KiswahiliScript Overview</h2>
+            <p>KiswahiliScript is a programming language created for Swahili speakers. Below you will find descriptions of each language construct:</p>
+            <h3>Language Constructs</h3>
+            <pre>$a = 2;</pre>
+            <p><strong>Description:</strong> This declares a variable called <code>$a</code> and sets its value to 2.</p>
+            <pre>wakati [ a < 100 ] {
+  $b = 2;
+  $niNambaTasa = 0;
+  wakati [ b <= a / 2 ] {
+    kama [ !a % b == 0 ] {
+      b = b + 1;
+    } au {
+      b = a;
+      niNambaTasa = 1;
+    };
+  };
+  kama [ !niNambaTasa ] {
+    andika a + ' ni namba tasa';
+    andika;
+  };
+  a = a + 1;
+};</pre>
+            <p><strong>Description:</strong> This is an example of using <code>wakati</code> (while) for a loop that processes numbers and prints if a number is prime.</p>
+            <pre>kazi semaHabari:jina: => {
+  andika 'habari ' + jina;
+};</pre>
+            <p><strong>Description:</strong> This defines a function called <code>semaHabari</code> that prints a greeting with the provided name.</p>
+            <pre>$counter = 0;
+
+
+
+wakati [ counter < 10 ] {
+  andika counter;
+  counter = counter + 1;
+};</pre>
+            <p><strong>Description:</strong> This is an example of using <code>wakati</code> (while) to count from 0 to 9.</p>
+            <pre>$jina = 'Patricia';
+
+andika jina;</pre>
+            <p><strong>Description:</strong> This declares a variable called <code>$jina</code> and prints its value.</p>
+            <pre>kazi kulaTikiti:: => {
+  andika 'ninakula tikiti';
+  idadiYaTikiti = idadiYaTikiti - 1;
+  andika 'zina ' + idadiYaTikiti + ' zilizobaki';
+  andika;
+};</pre>
+            <p><strong>Description:</strong> This function describes the action of eating a ticket and decreasing the remaining ticket count.</p>
+            <pre>$idadiYaTikiti = 20;
+
+wakati [ idadiYaTikiti > 5 ] {
+  kulaTikiti::;
+};</pre>
+            <p><strong>Description:</strong> This is an example of using <code>wakati</code> (while) to continue consuming tickets until the count is less than or equal to 5.</p>
+            <h3>Contact Information</h3>
+            <p>feel free to contribute by contact us</p>
+            <p><strong>Silivestir Assey:</strong> <a href="mailto:silivestirassey@gmx.com">silivestirassey@gmx.com</a></p>
+            <p><strong>Isack Wagunda:</strong> <a href="mailto:mwlwaphysicsict@gmail.com">mwlwaphysicsict@gmail.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleLanguage(lang) {
+            document.getElementById('sw').classList.toggle('show', lang === 'sw');
+            document.getElementById('en').classList.toggle('show', lang === 'en');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
 <!doctype html>
 <html lang=en>
 <head>
